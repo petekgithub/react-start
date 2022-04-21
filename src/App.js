@@ -6,13 +6,36 @@ import { useState } from "react"
 function App() {
   const [name, setName] = useState('Petek')
   const [age, setAge] = useState(34);
+  const [friends, setFriends] = useState(["ahmet","murat","pelin"])
+
+
 
   return (
     <div className="App">
       <h1>Hey: {name}</h1>
-      <h1>Age: {age}</h1>
-      <button onClick={() => setName('ali')}> Click name </button>
-      <button onClick={() => setAge(56)}> Change Age </button>
+      <h2>Age: {age}</h2>
+      <button onClick={() => setName('ali')}> Change name </button>
+      <button onClick={() => setAge(56)}> Change age </button>
+
+      <hr/>
+      <br />
+      <h3>Friends</h3>
+      {
+        friends.map((friend, index) => (
+            // for listing we have to add key 
+          <div key={index}>{friend}</div>
+        ))}
+
+        {/* statelerde atama işlemi yaparken, ilk bakmak gereken şey tanımlanan state'ine uygun atama yapılır. */}
+        {/* if I write jsut a name inside the array, it will change the whole array and set the just "aysem" */}
+      {/* <button onClick={() => setFriends(["ayşem"])}> Add new friend: </button> 
+       for that reason I'm writing  */}
+       {/* add the end of the array  */}
+      {/* <button onClick={() => setFriends([...friends, "ayşem"])}> Add new friend </button>  */}
+      {/* add the beginning of the array */}
+      <button onClick={() => setFriends(["ayşem",...friends])}> Add new friend </button> 
+
+
 
     </div>
   );
